@@ -1,0 +1,55 @@
+1.Check Deployment and ReplicaSet:
+   -->Verify that the Deployment and ReplicaSet are running correctly:
+       ->Run kubectl get deployments to check if the Deployment is available.
+       ->Run kubectl get replicasets to ensure the ReplicaSet is active.
+
+2.Inspect Pods:
+  -->Check the status of the Pods associated with the Deployment:
+       ->Run kubectl get pods to see if the Pods are running.
+       ->Look for any error messages or crash logs using kubectl logs <pod-name>.
+
+3.Service Configuration:
+  -->Confirm the NodePort service configuration:
+       ->Run kubectl get services to find the NodePort service.
+       ->Ensure the service is exposing the correct port (8000) and targeting the correct Pods.
+
+4.NodePort Access:
+  -->Verify that the NodePort is accessible:
+       ->Run kubectl describe service <service-name> to check the NodePort.
+       ->Ensure there are no firewall rules blocking external access to the NodePort.
+
+5.Network Policies:
+  -->Check if there are any network policies restricting traffic:
+       ->Run kubectl get networkpolicies to see if any policies are in place.
+       ->Adjust policies if needed.
+
+6.Firewall and Security Groups:
+  -->If you’re using a cloud provider, check the firewall rules or security groups:
+       ->Ensure the NodePort port (8000) is allowed.
+       ->Verify that the security group rules allow traffic from your IP.
+
+7.Node Health:
+  -->Inspect the health of the Nodes:
+       ->Run kubectl get nodes to check their status.
+       ->Look for any issues with the Nodes themselves.
+
+8.Application Logs:
+  -->Review application logs:
+       ->SSH into the Node where the Pod is running.
+       ->Check application logs (e.g., docker logs <container-id>).
+
+9.DNS Resolution:
+  -->Ensure DNS resolution is working:
+       ->Try accessing the application using the Node’s IP directly (e.g., http://<node-ip>:8000).
+
+10.Check Application Code:
+  -->Inspect the application code:
+       ->Ensure the application is listening on the correct port (8000).
+       ->Look for any errors or misconfigurations in the code.
+
+11.Load Balancer (if applicable):
+  -->If you’re using a cloud load balancer, verify its configuration:
+       ->Check if the load balancer is forwarding traffic to the correct NodePort.
+
+12.External Firewalls or Proxies:
+  -->If your network has external firewalls or proxies, ensure they allow traffic to the NodePort.
