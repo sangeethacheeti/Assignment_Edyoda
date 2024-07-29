@@ -1,0 +1,23 @@
+ReplicaSet:
+
+->A ReplicaSet ensures that a specified number of identical pods (replicas) are running at all times.
+
+->It’s commonly used for scaling applications horizontally by maintaining a desired number of replicas.
+
+->For example, if you have a web application, you might use a ReplicaSet to ensure that multiple instances of your app are available to handle incoming requests. If traffic increases, the ReplicaSet automatically scales up by creating additional replicas.
+
+->Use Case: Web servers, microservices, or stateless applications where you need to distribute traffic across multiple identical pods.
+
+DaemonSet:
+->A DaemonSet ensures that a specific pod runs on every node within a cluster.
+
+->It’s useful for deploying system-level services or agents that need to be present on every node, regardless of the number of nodes in the cluster.
+
+For example:
+->Log Collection: Deploying a logging agent (such as Fluentd or Filebeat) on every node to collect logs from all containers.
+
+->Monitoring: Running a monitoring agent (like Prometheus Node Exporter) on each node to collect system metrics.
+
+->Security: Deploying security agents or network plugins on all nodes.
+
+Use Case: System-level services or agents that require one instance per node
