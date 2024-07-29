@@ -1,0 +1,39 @@
+# Commands Used
+
+cd $HOME
+git clone https://github.com/ashishrpandey/example-voting-app
+cd /root/example-voting-app/k8s-specifications
+kubectl apply -f .
+kubectl get services
+kubectl delete pod <voting-pod-name>
+kubectl delete pod <worker-pod-name>
+kubectl delete pod <db-pod-name>
+
+# Observations
+
+## After Deleting Voting Pod
+- Frontend: No changes observed; all votes intact.
+- Unix: Voting pod is deleted. A new voting pod is spawned and running with no disturbance.
+
+## After Deleting Worker Pod
+- Frontend: No changes observed; all votes intact.
+- Unix: Worker pod is deleted. A new worker pod is spawned and running with no disturbance.
+
+## After Deleting DB Pod
+- Frontend: All votes are deleted.
+- Unix: DB pod is deleted. A new DB pod is spawned and running.
+
+# Why Result App Stopped Working
+The result application relies on the database to fetch and display voting results. When the DB pod is deleted, the result application loses access to the necessary data, causing it to stop working.
+
+# How I Made the Result Pod Work
+To make the result pod work again, I ensured that the DB pod was up and running. Once the database was available, the result pod automatically reconnected to it and resumed displaying results.
+
+# Jargons Learned
+- Kubernetes
+- Pods
+- NodePort
+- Redis
+- Frontend
+- Unix
+
