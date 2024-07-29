@@ -1,0 +1,22 @@
+Steps:
+
+1.Open the Deployment YAML File:
+    ->Edit the deployment.yaml file 
+
+2.Increase Replicas and Update Image:
+    ->Increase the number of replicas (e.g., set replicas: 2) to ensure there are multiple instances running.
+    ->Update the image field to the new image version (e.g., my-new-image:latest).
+
+3.Apply the Updated Configuration:
+    ->Run kubectl apply -f my-deployment.yaml to apply the changes.
+    ->Kubernetes will create a new ReplicaSet with the updated image.
+
+4.Monitor Rollout Status:
+    ->Check the rollout status using kubectl rollout status deployment/my-deployment.
+    ->Wait until the new pods are fully available.
+
+5.Verify New Version:
+    ->Confirm that the new image is running by using kubectl get pods -l app=my-deployment.
+
+6.Rollback (if needed):
+     ->If anything goes wrong, roll back to the previous version using kubectl rollout undo deployment/my-deployment.
